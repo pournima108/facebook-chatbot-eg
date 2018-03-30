@@ -1,0 +1,234 @@
+EFmehxnlNwjWBXhrO6mMKfKcnfLO9zvUvbiNDKJfuAIDdPy3nW
+6elh00E1VO2Zo1PO0DxeeVrMdH7kTOGlYOwVj4C0f4M06XrmrCOUOxZaO3UFeLGQ
+
+DM250k6IkAwfpBe9s4dyUZvDt9LxM6C0TvTybxuiHIyRDpI9jwRSIiIXaAX4mjGP
+
+https://4ddf96cf.ngrok.io/?code=iUTse8aQTrJhsvg3LJZEldaARMHT61 -- authcode
+
+7p0ybXAgncH041Wq7XpMaHrvP0VFEq --auth
+
+
+
+curl https://www.zopim.com/oauth2/token \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -d 'grant_type=authorization_code&code=7p0ybXAgncH041Wq7XpMaHrvP0VFEq&client_id=EFmehxnlNwjWBXhrO6mMKfKcnfLO9zvUvbiNDKJfuAIDdPy3nW&client_secret=DM250k6IkAwfpBe9s4dyUZvDt9LxM6C0TvTybxuiHIyRDpI9jwRSIiIXaAX4mjGP&redirect_uri="https://4ddf96cf.ngrok.io"&scope=read%20write' \
+ -X POST
+
+
+ curl https://humanbot.zendesk.com/oauth/tokens \
+  -H "Content-Type: application/json" \
+  -d '{"grant_type": "authorization_code", "code": "7p0ybXAgncH041Wq7XpMaHrvP0VFEq",
+    "client_id": "EFmehxnlNwjWBXhrO6mMKfKcnfLO9zvUvbiNDKJfuAIDdPy3nW", "client_secret": "DM250k6IkAwfpBe9s4dyUZvDt9LxM6C0TvTybxuiHIyRDpI9jwRSIiIXaAX4mjGP", 
+    "redirect_uri": "https://4ddf96cf.ngrok.io", "scope": "read write" }' \
+  -X POST
+
+  curl https://bot7.zendesk.com/oauth2/token \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -d 'grant_type=authorization_code&code=7p0ybXAgncH041Wq7XpMaHrvP0VFEqclient_id=wyaZSJmYshCkEbqhYUYmu3AcjR8D2nNsFsEfjwCdzTjPDDESXe&client_secret=6b51a4f34873f4481886c829f652bece88eb3b7c0453278839709d1cc091d851&redirect_uri=http%3A%2F%2F4ddf96cf.ngrok.io&scope=read%20write' \
+ -X POST
+
+ -----------------
+client id= wyaZSJmYshCkEbqhYUYmu3AcjR8D2nNsFsEfjwCdzTjPDDESXe
+client secret=rB0lOEICDqeom04iGTMrHNQpaF1jm3Qhpx1R0wgzmJZFfJpOG0q1YhCiHezZ6QFm
+
+
+
+curl https://www.zopim.com/api/v2/account \
+  -d '{"billing": {"email": "pournima.mishra108@gmail.com", "first_name": "John"}}' \
+  -v -u mishra.pournima108@gmail.com:pournima \
+  -X PUT -H "Content-Type: application/json"
+
+curl https://www.zopim.com/api/v2/chats \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+
+  client secret fot tutorial:6b51a4f34873f4481886c829f652bece88eb3b7c0453278839709d1cc091d851
+
+
+
+  curl https://bot7.zendesk.com/api/v2/oauth/tokens.json \
+   -H "Content-Type: application/json" \
+   -d '{"token": {"client_id": "wyaZSJmYshCkEbqhYUYmu3AcjR8D2nNsFsEfjwCdzTjPDDESXe", "scopes": ["read", "write"]}}' \
+   -X POST -v -u mishra.pournima108@gmail.com:pournima
+
+
+   api token:l7R64UOf3vahmYe0R8KtNBdojaWxWlKaQrzzM11e
+
+
+
+   curl https://www.zopim.com/api/v2/chats \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+  curl https://www.zopim.com/api/v2/chats \
+  -d '{
+         "visitor": {
+            "phone":"",
+            "notes":"",
+            "id":"1.12345",
+            "name": "John",
+            "email": "visitor_john@doe.com"
+         },
+         "message":"Hi there!",
+         "type":"offline_msg",
+         "timestamp": 1444156010,
+         "session": {
+           "browser": "Safari",
+           "city": "Orlando",
+           "country_code": "US",
+           "country_name": "United States",
+           "end_date": "2014-10-09T05:46:47Z",
+           "id": "141109.654464.1KhqS0Nw",
+           "ip": "67.32.299.96",
+           "platform": "Mac OS",
+           "region": "Florida",
+           "start_date": "2014-10-09T05:28:31Z",
+           "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25"
+         }
+      }' \
+  -v -u mishra.pournima108@gmail.com:pournima \
+  -X POST -H "Content-Type: application/json"
+
+----create agent
+
+  curl https://www.zopim.com/api/v2/agents \
+  -d '{
+        "email": "pournima.mishra108@gmail.com",
+        "password": "pournima.mishra108@gmail.com",
+        "first_name": "Pournima1005",
+        "last_name": "Mishra",
+        "display_name": "Agent Pournima",
+        "enabled": 1
+      }' \
+  -v -u mishra.pournima108@gmail.com:pournima \
+  -X POST -H "Content-Type: application/json"
+
+  -----get agent
+  curl "https://www.zopim.com/api/v2/agents" \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+
+  ---get triggers
+  curl https://www.zopim.com/api/v2/triggers \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+  -create oauth client
+
+  curl https://www.zopim.com/api/v2/oauth/clients \
+  -d '{
+        "name": "client2", \
+        "scopes": "read write", \
+        "redirect_uris": "https://1cefb64c.ngrok.io"
+      }' \
+  -v -u mishra.pournima108@gmail.com:pournima \
+  -X POST -H "Content-Type: application/json"
+
+curl https://bot7.zendesk.com/api/v2/oauth/clients.json \
+  -X POST -H "Content-Type: application/json" \
+  -d '{"client": {"name": "Test Client", "identifier": "unique_id"}}'
+  -v -umishra.pournima108@gmail.com:pournima \
+
+
+---get client
+  curl https://bot7.zendesk.com/api/v2/oauth/clients \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+curl https://bot7.zendesk.com/api/v2/account/settings.json \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+curl https://bot7.zendesk.com/api/v2/oauth/global_clients.json \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+curl https://www.zopim.com/api/v2/oauth/clients \
+  -d '{
+        "name": "tutorials", \
+        "scopes": "read write", \
+        "redirect_uris": "  https://1cefb64c.ngrok.io"
+      }' \
+  -v -u {email_address}:{password} \
+  -X POST -H "Content-Type: application/json"
+
+
+
+  {"clients":[{"url":"https://bot7.zendesk.com/api/v2/oauth/clients/360000009092.json","id":360000009092,
+  "user_id":362310907691,"name":"Tutorials","identifier":"tutorials","company":"hexaware","description":"my tutorials bot",
+  "redirect_uri":["https://1cefb64c.ngrok.io"],"secret":"6b51a4f348","created_at":"2018-03-28T12:07:47Z","updated_at":"2018-03-29T06:17:44Z",
+  "global":false,"logo_url":null}],"next_page":null,"previous_page":null,"count":1
+
+
+
+  curl https://bot7.zendesk.com/api/v2/oauth/tokens \
+  -v -u  mishra.pournima108@gmail.com:pournima
+
+
+  curl https://www.zopim.com/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d 'grant_type=authorization_code&code=pournima&client_id=wyaZSJmYshCkEbqhYUYmu3AcjR8D2nNsFsEfjwCdzTjPDDESXe
+     &client_secret=rB0lOEICDqeom04iGTMrHNQpaF1jm3Qhpx1R0wgzmJZFfJpOG0q1YhCiHezZ6QFm&redirect_uri="https://1cefb64c.ngrok.io"&scope=read%20write' \
+  -X POST
+
+
+
+  curl https://bot7.zendesk.com/api/v2/visitors \
+  -d '{
+        "name": Visitor 1,
+        "email": "cgeeks12@gmail.com.com",
+        "notes": "This visitor is really cool.",
+        "phone": 8983537533
+      }' \
+  -v -u mishra.pournima108@gmail.com:pournima \
+  -X POST -H "Content-Type: application/json"
+
+
+curl https://bot7.zendesk.com/api/v2/users.json \
+  -d '{"user": {"name": "Roger Wilco", "email": "roge@example.org"}}' \
+  -H "Content-Type: application/json" -X POST \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+
+curl https://bot7.zendesk.com/api/v2/users/362399702772/related.json \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+  curl https://bot7.zendesk.com/api/v2/users/ \
+  -v -u mishra.pournima108@gmail.com:pournima -H "Content-Type: application/json"
+
+
+  curl https://bot7.zendesk.com/api/v2/users/362399702772/password.json \
+  -X POST -d '{"password": "newpassword"}' -H "Content-Type: application/json" \
+  -v -u mishra.pournima108@gmail.com:pournima
+
+
+
+  curl -u mishra.pournima108@gmail.com:pournima https://www.zopim.com/api/v2/agents/me
+
+
+
+curl https://www.zopim.com/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d 'grant_type=authorization_code&code='bot7'&client_id=4CLSwdBCc7yOYgN352xvIDyKVgXVKimMY04jbGIGHDbRJ2tps7
+     &client_secret=SsJa1Lr2V8HFvJVXZaU4uLQXLSPrhENNcFqZkZXzqFz3SsexcFYpgL9uqRFar6tk&redirect_uri=https://2ed9bc89.ngrok.io&scope=read%20write' \
+  -X POST
+
+
+
+  curl https://bot7.zendesk.com/oauth/tokens \
+  -H "Content-Type: application/json" \
+  -d '{"grant_type": "pournima", "client_id": "4CLSwdBCc7yOYgN352xvIDyKVgXVKimMY04jbGIGHDbRJ2tps7", 
+    "client_secret": "SsJa1Lr2V8HFvJVXZaU4uLQXLSPrhENNcFqZkZXzqFz3SsexcFYpgL9uqRFar6tk", "scope": "read",
+    "username": "mishra.pournima108@gmail.com", "password": "pournima"' \
+  -X POST
+
+
+  curl https://bot7.zendesk.com/api/v2/tickets.json \
+   -u "mishra.pournima108@gmail.com":"pournima"
+
+
+   token": "0e28b0ce18
