@@ -1,6 +1,6 @@
 const API_AI_TOKEN = 'd4b40a57ba3645f3803c87e9e6901165';
 const apiAiClient = require('apiai')(API_AI_TOKEN);
-const FACEBOOK_ACCESS_TOKEN = 'EAAFvpI2KficBAHfh4zcdwhsHR7hZBz29BZASyfZBZBtZBxL4MHeRJOfLodZBuhpZBu3wec8k90RMvXpZBUtCxLFcRrQCN8s6ZCm14ZBjsZA0GJzhO4v3ijUqC6koVBBJ0iiOn3ZACeepJcrHzARUtQ2LhetITDR27NrafqPZBxkIHKvQd8QZDZD';
+const FACEBOOK_ACCESS_TOKEN = 'EAAFvpI2KficBAGPOb5AeQqhZCq0ldbFxvHQt1VZAo5LUo48Is7290fcoRRx36BpsYCFv88fdHlPDzBke08Hp8uodhJKnZCtBTzDUho9g8RqvOvY0ELJ5bVPO1rHZB0jIuSae6VWOisZAIs5lUQRvdwMXnOZAe9mCLH8NL5ifB7IgZDZD';
 const request = require('request');
 var Zendesk = require('zendesk-node-api');
  
