@@ -29,29 +29,31 @@ const sendTextMessage = (senderId, text) => {
    apiaiSession.on('response', (response) => {
      JSON.stringify(response);
     const result = response.result.fulfillment.speech;
-    console.log(result);
-    
+    console.log(result);  
     sendTextMessage(senderId, result);    
     });
-    zendesk.tickets.create({
-      subject: 'A new ticket',
-      comment: {
-        body: 'A ticket created with zendesk-node-api'
-      }
-    }).then(function(result){
-      console.log("ticket created:",result);
-    });
-    
-    
-    zendesk.users.create({
-      user: {"name": "HW zdjd", "email": "pooo@example.org"},
-    }).then(function(result){
-      console.log("user created:",result);
-    });
-    
-    zendesk.search.list('query=type:ticket status:open').then(function(results){
-      console.log("searched ticket :",results);
-    });
    apiaiSession.on('error', error => console.log(error));
+   zendesk.tickets.create({
+    subject: 'A new ticket',
+    comment: {
+      body: 'A ticket created with zendesk-node-api'
+    }
+  }).then(function(result){
+    console.log("ticket created:",result);
+  });
+//create tickets
+  
+  
+  zendesk.users.create({
+    user: {"name": "HW zdjd", "email": "pooo@example.org"},
+  }).then(function(result){
+    console.log("user created:",result);
+  });
+  //create users
+  
+  zendesk.search.list('query=type:ticket status:open').then(function(results){
+    console.log("searched ticket :",results);
+  });
+  //search the list of tickets
     apiaiSession.end();
    };

@@ -232,3 +232,10 @@ curl https://www.zopim.com/oauth2/token \
 
 
    token": "0e28b0ce18
+
+
+curl https://www.zopim.com/api/v2/chats \
+ -u "mishra.pournima108@gmail.com":"pournima"
+
+
+https://hooks.zapier.com/hooks/catch/3123027/kntyfe/  -----zapier
