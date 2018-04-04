@@ -1,15 +1,23 @@
 const API_AI_TOKEN = 'd4b40a57ba3645f3803c87e9e6901165';
 const apiAiClient = require('apiai')(API_AI_TOKEN);
-const FACEBOOK_ACCESS_TOKEN = 'EAAFvpI2KficBAGPOb5AeQqhZCq0ldbFxvHQt1VZAo5LUo48Is7290fcoRRx36BpsYCFv88fdHlPDzBke08Hp8uodhJKnZCtBTzDUho9g8RqvOvY0ELJ5bVPO1rHZB0jIuSae6VWOisZAIs5lUQRvdwMXnOZAe9mCLH8NL5ifB7IgZDZD';
+const FACEBOOK_ACCESS_TOKEN = 'EAAFvpI2KficBAHfh4zcdwhsHR7hZBz29BZASyfZBZBtZBxL4MHeRJOfLodZBuhpZBu3wec8k90RMvXpZBUtCxLFcRrQCN8s6ZCm14ZBjsZA0GJzhO4v3ijUqC6koVBBJ0iiOn3ZACeepJcrHzARUtQ2LhetITDR27NrafqPZBxkIHKvQd8QZDZD';
 const request = require('request');
-var Zendesk = require('zendesk-node-api');
+//var Zendesk = require('zendesk-node-api');
+var Zendesk=require('node-zendesk');
  
-var zendesk = new Zendesk({
-  url: 'https://bot7.zendesk.com', // https://example.zendesk.com
+var client = Zendesk.createClient({
   email:'mishra.pournima108@gmail.com', // me@example.com
   token:  'l7R64UOf3vahmYe0R8KtNBdojaWxWlKaQrzzM11e',
-})
+  remoteUri: 'https://bot7.zendesk.com', // https://example.zendesk.com
+});
 
+client.users.list(function (err, req, result) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log(JSON.stringify(result[0], null, 2, true));//gets the first page
+});
 
 const sendTextMessage = (senderId, text) => {
     request({
@@ -24,36 +32,43 @@ const sendTextMessage = (senderId, text) => {
    };
    module.exports = (event) => {
     const senderId = event.sender.id;
+    console.log(senderId)
     const message = event.message.text;
+    console.log(message)
    const apiaiSession = apiAiClient.textRequest(message, {sessionId: 'pournima'});
    apiaiSession.on('response', (response) => {
      JSON.stringify(response);
-    const result = response.result.fulfillment.speech;
-    console.log(result);  
-    sendTextMessage(senderId, result);    
-    });
+    //const result = response.result.fulfillment.speech;
+    console.log(response.result.fulfillment);
+     
+    //console.log(result);
+    
+       
+    if(response.result.fulfillment.speech==''){
+      result="connecting our live agent"
+  }else{
+    result=response.result.fulfillment.speech;
+  }
+  sendTextMessage(senderId, result); 
+  var observer = {
+    error: console.error,
+    next: function(status, body, response, result, nextPage) {
+      console.log(JSON.stringify(body, null, 2, true));
+      console.log('Next page:', nextPage);
+    },
+    complete: function(statusList, body, responseList, resultList) {
+      console.log('Pagination complete.');
+      console.log(body); //will display all tickets
+    }  
+  };
+  client.tickets.list(observer);
+
+       })
+  
+    //search the list of
    apiaiSession.on('error', error => console.log(error));
-   zendesk.tickets.create({
-    subject: 'A new ticket',
-    comment: {
-      body: 'A ticket created with zendesk-node-api'
-    }
-  }).then(function(result){
-    console.log("ticket created:",result);
-  });
+  
 //create tickets
   
-  
-  zendesk.users.create({
-    user: {"name": "HW zdjd", "email": "pooo@example.org"},
-  }).then(function(result){
-    console.log("user created:",result);
-  });
-  //create users
-  
-  zendesk.search.list('query=type:ticket status:open').then(function(results){
-    console.log("searched ticket :",results);
-  });
-  //search the list of tickets
     apiaiSession.end();
    };
