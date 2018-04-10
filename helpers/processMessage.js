@@ -6,9 +6,9 @@ const request = require('request');
 var Zendesk=require('node-zendesk');
  
 var client = Zendesk.createClient({
-  email:'mishra.pournima108@gmail.com', // me@example.com
+  email:'wrestlingmania9@gmail.com', // me@example.com
   token:  'l7R64UOf3vahmYe0R8KtNBdojaWxWlKaQrzzM11e',
-  remoteUri: 'https://bot7.zendesk.com', // https://example.zendesk.com
+  remoteUri: 'https://humanbot.zendesk.com', // https://example.zendesk.com
 });
 
 client.users.list(function (err, req, result) {
@@ -45,31 +45,32 @@ const sendTextMessage = (senderId, text) => {
     
        
     if(response.result.fulfillment.speech==''){
-      result="connecting our live agent"
+      result="connecting our live agent";
+      var ticket = {
+        "ticket":
+          {
+            "subject":"My printer is on fire!",
+            "comment": {
+              "body": "The smoke is very colorful."
+            }
+          }
+        };
+      
+      client.tickets.create(ticket,  function(err, req, result) {
+        if (err) return handleError(err);
+        console.log(result);
+        console.log(JSON.stringify(result, null, 2, true));
+      });
     } else{
      result=response.result.fulfillment.speech;
     }
-  sendTextMessage(senderId, result); 
-
-
-  var observer = {
-  error: console.error,
-  next: function(status, body, response, result, nextPage) {
-     console.log(JSON.stringify(body, null, 2, true));
-     console.log('Next page:', nextPage);
-  },
-  complete: function(statusList, body, responseList, resultList) {
-     console.log('Pagination complete.');
-     console.log(body); //will display all tickets
-    }  
-  };
-  client.tickets.list(observer);      
-})
   
+  sendTextMessage(senderId, result); 
+  })
     //search the list of
   apiaiSession.on('error', error => console.log(error));
   
 //create tickets
   
-  apiaiSession.end();
-   };
+  apiaiSession.end()
+   }
