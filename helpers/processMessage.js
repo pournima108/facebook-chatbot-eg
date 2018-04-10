@@ -30,7 +30,7 @@ const sendTextMessage = (senderId, text) => {
     }
     });
    };
-   module.exports = (event) => {
+  module.exports = (event) => {
     const senderId = event.sender.id;
     console.log(senderId)
     const message = event.message.text;
@@ -46,29 +46,30 @@ const sendTextMessage = (senderId, text) => {
        
     if(response.result.fulfillment.speech==''){
       result="connecting our live agent"
-  }else{
-    result=response.result.fulfillment.speech;
-  }
+    } else{
+     result=response.result.fulfillment.speech;
+    }
   sendTextMessage(senderId, result); 
+
+
   var observer = {
-    error: console.error,
-    next: function(status, body, response, result, nextPage) {
-      console.log(JSON.stringify(body, null, 2, true));
-      console.log('Next page:', nextPage);
-    },
-    complete: function(statusList, body, responseList, resultList) {
-      console.log('Pagination complete.');
-      console.log(body); //will display all tickets
+  error: console.error,
+  next: function(status, body, response, result, nextPage) {
+     console.log(JSON.stringify(body, null, 2, true));
+     console.log('Next page:', nextPage);
+  },
+  complete: function(statusList, body, responseList, resultList) {
+     console.log('Pagination complete.');
+     console.log(body); //will display all tickets
     }  
   };
-  client.tickets.list(observer);
-
-       })
+  client.tickets.list(observer);      
+})
   
     //search the list of
-   apiaiSession.on('error', error => console.log(error));
+  apiaiSession.on('error', error => console.log(error));
   
 //create tickets
   
-    apiaiSession.end();
+  apiaiSession.end();
    };
