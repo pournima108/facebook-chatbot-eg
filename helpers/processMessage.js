@@ -2,22 +2,17 @@ const API_AI_TOKEN = 'd4b40a57ba3645f3803c87e9e6901165';
 const apiAiClient = require('apiai')(API_AI_TOKEN);
 const FACEBOOK_ACCESS_TOKEN = 'EAAFvpI2KficBAHfh4zcdwhsHR7hZBz29BZASyfZBZBtZBxL4MHeRJOfLodZBuhpZBu3wec8k90RMvXpZBUtCxLFcRrQCN8s6ZCm14ZBjsZA0GJzhO4v3ijUqC6koVBBJ0iiOn3ZACeepJcrHzARUtQ2LhetITDR27NrafqPZBxkIHKvQd8QZDZD';
 const request = require('request');
-//var Zendesk = require('zendesk-node-api');
-var Zendesk=require('node-zendesk');
+var Zendesk = require('zendesk-node-api');
+//var Zendesk=require('node-zendesk');
  
-// var client = Zendesk.createClient({
-//   email:'wrestlingmania9@gmail.com', // me@example.com
-//   token:  'l7R64UOf3vahmYe0R8KtNBdojaWxWlKaQrzzM11e',
-//   remoteUri: 'https://humanbot.zendesk.com', // https://example.zendesk.com
-// });
 
-// client.users.list(function (err, req, result) {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
-//   console.log(JSON.stringify(result[0], null, 2, true));//gets the first page
-// });
+
+var zendesk = new Zendesk({
+  uri: 'https://humanbot.zendesk.com', // https://example.zendesk.com
+  email:'wrestlingmania9@gmail.com', // me@example.com
+  token:  'l7R64UOf3vahmYe0R8KtNBdojaWxWlKaQrzzM11e',
+});
+
 
 const sendTextMessage = (senderId, text) => {
     request({
@@ -42,27 +37,22 @@ const sendTextMessage = (senderId, text) => {
     console.log(response.result.fulfillment);
      
     //console.log(result);
-    
-       
+      
     if(response.result.fulfillment.speech==''){
       result="connecting our live agent";
-      // var ticket = {
-      //   "ticket":
-      //     {
-      //       "subject":"My printer is on fire!",
-      //       "comment": {
-      //         "body": "The smoke is very colorful."
-      //       }
-      //     }
-      //   };
-      
-      // client.tickets.create(ticket,  function(err, req, result) {
-      //   if (err) return handleError(err);
-      //   console.log(result);
-      //   console.log(JSON.stringify(result, null, 2, true));
-      // });
+      zendesk.tickets.create({
+        subject: 'A new ticket',
+        comment: {
+          body: 'A ticket created with zendesk-node-api'
+        }
+      }).then(function(result){
+        console.log(result);
+      zendesk.tickets.show(TICKET_ID).then(function(ticket){
+         console.log(ticket);
+        });
+    });// Create a ticket
     } else{
-     result=response.result.fulfillment.speech;
+      result=response.result.fulfillment.speech;
     }
   
   sendTextMessage(senderId, result); 
